@@ -1,20 +1,58 @@
-#!bin/bash
+#!/bin/bash
 
-PS3="Select your language please: "
+clear
 
-select lng in Bash Java C++ Quit
+submanual(){
+while :
 do
-    case $lng in
-        "processor activity")
-            echo "$lng - that's what we're talking about";;
-        "Java")
-           echo "$lng - is your VM ready?";;
-        "C++")
-           echo "$lng - let's prepare for a lot of compilation";;
-        "Quit")
-           echo "We're done"
-           break;;
+echo "sub Menu:"
+echo -e "\t(1) Options 1"
+echo -e "\t(2) Options 1"
+echo -e "\t(3) Options 2"
+echo -e "\t(4) Options 2"
+echo -e "\t(B) Back"
+echo -n "Porfavor selecciona tu opcion:"
+read c
+case $c in
+    "1"|"1")
+    top -n 1
+    ;;
+    "2"|"2")
+    free -h
+    ;;
+    "3"|"3")
+    who -l
+    ;;
+    "4"|"4")
+    who | nl
+    ;;
+    "b"|"B")
+    break
+    ;;
         *)
-           echo "Ooops";;
-    esac
+        echo "invalid answer, please try again"
+        ;;
+esac
+done
+}
+
+while :
+do
+echo "Main Menu:"
+echo -e "\t(a) Entrar a ver los procesos."
+echo -e "\t(b) Exit"
+echo -n "Please enter your choice:"
+read choice
+case $choice in
+    "a"|"A")
+    submanual
+    ;;
+    "b"|"B")
+    exit
+    ;;
+        *)
+        echo "invalid answer, please try again"
+        ;;
+
+esac
 done
